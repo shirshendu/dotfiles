@@ -48,6 +48,8 @@ Plugin 'tpope/vim-vividchalk'
 Plugin 'danro/rename.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'embear/vim-localvimrc'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'vim-scripts/ruby-matchit'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
