@@ -6,6 +6,7 @@ command FirstSetup execute "!mkdir -p ~/.vim/bundle && git clone https://github.
 
 " General
 set nocompatible
+
 " Required Vundle setup
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -20,7 +21,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'burnettk/vim-angular'
 "Plugin 'curist/vim-angular-template'
 Plugin 'tpope/vim-bundler'
@@ -38,7 +40,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-pathogen'
+"Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'ngmy/vim-rubocop'
@@ -50,15 +52,21 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'embear/vim-localvimrc'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'vim-scripts/ruby-matchit'
+Plugin 'rodjek/vim-puppet'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Load pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+let python_highlight_all=1
 
-call pathogen#infect()
+"" Load pathogen
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"
+"call pathogen#infect()
 se t_Co=16
 let g:solarized_termcolors=16
 syntax on
@@ -165,10 +173,14 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore "node_modules"'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore "node_modules" --ignore "vendor"'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
 let g:EclimCompletionMethod = 'omnifunc'
+let g:formatdef_rubocop_rb = '"rubocop --auto-correct"'
+let g:formatters_ruby = ['rubocop_rb']
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
