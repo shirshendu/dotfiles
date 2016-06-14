@@ -28,7 +28,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-bundler'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-cucumber'
+"Plugin 'tpope/vim-cucumber'
+"Plugin 'rooprob/vim-behave'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-dispatch'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
@@ -37,7 +39,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'othree/yajs.vim'
 "Plugin 'maksimr/vim-jsbeautify'
-Plugin 'mxw/vim-jsx'
+"Plugin 'mxw/vim-jsx'
 Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-markdown'
 "Plugin 'tpope/vim-pathogen'
@@ -56,6 +58,8 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
+Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,12 +67,21 @@ filetype plugin indent on    " required
 
 let python_highlight_all=1
 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
 "" Load pathogen
 "runtime bundle/vim-pathogen/autoload/pathogen.vim
 "
 "call pathogen#infect()
-se t_Co=16
-let g:solarized_termcolors=16
+se t_Co=256
+"let g:solarized_termcolors=256
 syntax on
 filetype plugin indent on
 " Theme/Colours
@@ -184,3 +197,4 @@ let g:formatdef_rubocop_rb = '"rubocop --auto-correct"'
 let g:formatters_ruby = ['rubocop_rb']
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let g:ag_working_path_mode="r"
